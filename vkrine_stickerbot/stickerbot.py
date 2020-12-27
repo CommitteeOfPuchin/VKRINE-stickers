@@ -4,15 +4,20 @@ from requests.exceptions import ReadTimeout
 import os
 import vkrine_stickerbot.utils as utils
 import time
+from vkrine_stickerbot.eventlistener import ChatLogger
 
-class StickerBot:
-    def __init__(self, runtime="runtime"):
+class StickerBot(object):
+    def __init__(self, runtime="runtime", prefix="/"):
         utils.init_runtime(runtime)
         self.__token__ = utils.load_token(runtime)
         self.__should_stop__ = False
         self.__session__ = VkApi(token=self.__token__)
         self.__vk__ = self.__session__.get_api()
         self.__listening__ = False
+        self.__prefix__ = prefix
+        self.__chat_logger__ = ChatLogger()
+        self.__user__ = self.__vk__.users.get(fields="domain")[0]
+        print("Выполнен вход под аккаунтом @id{} ({} {})".format(self.__user__['id'], self.__user__['first_name'], self.__user__['last_name']))
 
     def run(self):
         reconnect_count = 0
@@ -44,9 +49,26 @@ class StickerBot:
 
     def __on_event__(self, event):
         if event.type == VkEventType.MESSAGE_NEW:
-            print(event.text)
+            self.__chat_logger__.on_event(event, self)
             if event.text == "stop":
                 self.__should_stop__ = True
+            if event.text.startswith("echo "):
+                self.send_message(event.peer_id, text=event.text[5:])
 
     def stop(self):
         self.__should_stop__ = True
+
+    def vk(self):
+        return self.__vk__
+
+    def send_message(self, peer_id, text=None, attachments=None):
+        self.__vk__.messages.send(peer_id=peer_id, message=text, attachment=attachments, random_id=int(time.time()*1000))
+
+    def get_prefix(self):
+        return self.__prefix__
+    
+    def get_id(self):
+        return self.__user__["id"]
+    
+    def get_domain(self):
+        return self.__user__["domain"]
