@@ -1,0 +1,49 @@
+{
+    "name": "English (US)",
+    "author": "MJaroslav",
+    "keys": {
+        "commands.generic.permission": "You do not have permission to use this command",
+        "commands.generic.exception": "An unknown error occurred while attempting to perform this command: {}",
+        "commands.generic.syntax": "Invalid command syntax",
+        "commands.generic.user.not_found": "That user cannot be found: {}",
+        "commands.generic.not_found": "Unknown command. Try /help for a list of commands",
+        "commands.generic.num.invalid": "'{}' is not a valid number",
+        "commands.generic.boolean.invalid": "'{}' is not true or false",
+        "commands.generic.num.too_small": "The number you have entered ({}) is too small, it must be at least {}",
+        "commands.generic.num.too_big": "The number you have entered ({}) is too big, it must be at most {}",
+        "commands.generic.float.too_small": "The number you have entered ({:.2f}) is too small, it must be at least {:.2f}",
+        "commands.generic.float.too_big": "The number you have entered ({:.2f}) is too big, it must be at most {:.2f}",
+        "commands.generic.usage": "Usage: {}",
+        "commands.echo.aliases": [
+            "repeat"
+        ],
+        "commands.reload.aliases": [
+            "update",
+            "upd"
+        ],
+        "commands.stop.aliases": [
+            "shutdown"
+        ],
+        "commands.help.aliases": [
+            "h",
+            "?"
+        ],
+        "commands.done": "Done",
+        "commands.none": "None",
+        "commands.text.locale.current": "Current locale '{}'",
+        "commands.text.locale.not_found": "That locale can not be found '{}'",
+        "commands.text.locale.list": "Locales: {}",
+        "help.aliases": "Command aliases: {}",
+        "help.page": "Commands page {}\nUse 'help [command|page]' for command details or another page\n\n{}",
+        "help.echo": "Bot answer with entered arguments",
+        "help.echo.extended": "Bot answer with entered arguments",
+        "help.reload": "Update bot files",
+        "help.reload.extended": "Reload locales and permissions",
+        "help.locale": "Get or set bot, chat or yourself locale",
+        "help.locale.extended": "Use 'locale [global|chat|personal]' for get bot, chat and personal locale\nUse 'locale [global|chat|personal] [locale]' for set locale to bot, chat and yourself (set 'default' for reset)\nUse 'locale list' for list locales",
+        "help.help": "Show this message",
+        "help.help.extended": "Use 'help [command|page]' for another page or command details",
+        "help.stop": "Stop bot",
+        "help.stop.extended": "Stop bot program"
+    }
+}
